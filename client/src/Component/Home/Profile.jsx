@@ -41,28 +41,22 @@ function Profile() {
 
           {/* Typewriter Effect*/}
           <div className="profile-details-role">
-            <span className="primary-text">
-              {" "}
-              <h1>
-                {" "}
-                <span>
-                  <Typewriter
-                    words={[
-                      "💻 a Full-Stack Developer",
-                      "🚀 building scalable web apps",
-                      "🎨 creating clean APIs & UIs",
-                      "🧠 turning ideas into products",
-                    ]}
-                    loop={0}
-                    cursor
-                    cursorStyle="|"
-                    typeSpeed={80}
-                    deleteSpeed={50}
-                    delaySpeed={1200}
-                  />
-                </span>
-              </h1>
-            </span>
+            <h1>
+              <Typewriter
+                words={[
+                  "💻 A Full-Stack Developer",
+                  "🚀 Building scalable web apps",
+                  "🎨 Creating clean APIs & UIs",
+                  "🧠 Turning ideas into products",
+                ]}
+                loop={0}
+                cursor
+                cursorStyle="|"
+                typeSpeed={80}
+                deleteSpeed={50}
+                delaySpeed={1200}
+              />
+            </h1>
           </div>
 
           {/* Description*/}
