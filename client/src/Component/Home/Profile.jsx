@@ -17,7 +17,7 @@ function Profile() {
                 <IoLogoFacebook color="white" />
               </a>
               <a href="#">
-                <AiFillGooglePlusSquare color="black" />
+                <AiFillGooglePlusSquare color="white" />
               </a>
               <a href="https://www.instagram.com/chiomaanaso.codes/">
                 <FaInstagram color="white" />
