@@ -14,19 +14,19 @@ function Profile() {
           <div className="colz">
             <div className="colz-icon">
               <a href="https://www.facebook.com/profile.php?id=61556737950018">
-                <IoLogoFacebook color="black" />
+                <IoLogoFacebook color="white" />
               </a>
               <a href="#">
                 <AiFillGooglePlusSquare color="black" />
               </a>
               <a href="https://www.instagram.com/chiomaanaso.codes/">
-                <FaInstagram color="black" />
+                <FaInstagram color="white" />
               </a>
               <a href="https://www.youtube.com/@ChiomaAnaso-b5m4y">
-                <TfiYoutube color="black" />
+                <TfiYoutube color="white" />
               </a>
               <a href="#">
-                <FaTwitter color="black" />
+                <FaTwitter color="white" />
               </a>
             </div>
           </div>
@@ -68,7 +68,7 @@ function Profile() {
           {/* Description*/}
           <h1>
             <span className="profile-role-tagline">
-              Building applications with fron and backend operations
+              Building applications with front and backend operations
             </span>
           </h1>
 

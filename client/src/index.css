@@ -55,6 +55,7 @@
   --bg-0: #0f0b14;     /* deep background */
   --bg-1: #211625;     /* plum surface */
   --bg-2: #2b2d4c;     /* cool shadow/blue */
+  --bg-3: white;     /* cool  */
 
   --accent-1: #8d0b51; /* deep magenta highlight */
   --accent-2: #873165; /* purple-magenta */
@@ -71,6 +72,7 @@
 
   --radius-pill: 999px;
   --radius-md: 16px;
+
 
   /* Focus ring */
   --ring: rgba(173, 104, 148, 0.55);
