@@ -1,12 +1,10 @@
 import { useState } from "react";
-
-import "./App.css";
-import Profile from "./Component/Home/Profile";
+import Home from "./Component/Home/Home";
 
 function App() {
   return (
     <>
-      <Profile />
+      <Home />
     </>
   );
 }
