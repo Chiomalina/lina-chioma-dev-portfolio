@@ -1,10 +1,9 @@
-import { useState } from "react";
-import Home from "./Component/Home/Home";
+import PortfolioContainer from "./Component/PortfolioContainer";
 
 function App() {
   return (
     <>
-      <Home />
+      <PortfolioContainer />
     </>
   );
 }
