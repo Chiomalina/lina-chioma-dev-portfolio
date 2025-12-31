@@ -71,7 +71,10 @@ function Profile() {
           {/* Profile Options*/}
           <div className="profile-options">
             <button className="btn primary-btn"> Hire Me </button>
-            <a href="../../../../public/resume.pdf">
+            <a
+              href="../../../../public/resume.pdf"
+              download="Chioma chiomacv.pdf"
+            >
               <button className="btn highlighted-btn">Get Resume</button>
             </a>
           </div>
