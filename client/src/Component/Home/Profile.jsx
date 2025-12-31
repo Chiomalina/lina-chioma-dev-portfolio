@@ -3,6 +3,7 @@ import { IoLogoFacebook } from "react-icons/io";
 import { AiFillGooglePlusSquare } from "react-icons/ai";
 import { FaInstagram, FaTwitter } from "react-icons/fa";
 import { TfiYoutube } from "react-icons/tfi";
+import { Typewriter } from "react-simple-typewriter";
 
 function Profile() {
   return (
@@ -25,6 +26,38 @@ function Profile() {
             <a href="">
               <FaTwitter color="black" />
             </a>
+
+            <div className="profile-details-name">
+              <span>
+                {" "}
+                Hello, I'M <span className="highlighted-text">Chioma</span>
+              </span>
+            </div>
+
+            <div className="profile-details-role">
+              <span className="primary-text">
+                {" "}
+                <h1>
+                  {" "}
+                  <span>
+                    <Typewriter
+                      words={[
+                        "a Full Stack Developer 💻",
+                        "MERN Stack Dev  📲",
+                        "Cross Platform Dev 👩🏽‍💻",
+                        "building projects 📽️",
+                      ]}
+                      loop={0}
+                      cursor
+                      cursorStyle="|"
+                      typeSpeed={80}
+                      deleteSpeed={50}
+                      delayedSpeed={1200}
+                    />
+                  </span>
+                </h1>
+              </span>
+            </div>
           </div>
         </div>
       </div>
