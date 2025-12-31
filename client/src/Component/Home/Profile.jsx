@@ -4,6 +4,7 @@ import { AiFillGooglePlusSquare } from "react-icons/ai";
 import { FaInstagram, FaTwitter } from "react-icons/fa";
 import { TfiYoutube } from "react-icons/tfi";
 import { Typewriter } from "react-simple-typewriter";
+import "./Profile.css";
 
 function Profile() {
   return (
@@ -33,7 +34,8 @@ function Profile() {
           <div className="profile-details-name">
             <span>
               {" "}
-              Hello, I'm <span className="highlighted-text">Chioma</span>
+              Hello, I'm{" "}
+              <span className="highlighted-text">Lina Chioma Anaso</span>
             </span>
           </div>
 
