@@ -34,6 +34,7 @@ function Profile() {
               </span>
             </div>
 
+            {/* Typewriter Effect*/}
             <div className="profile-details-role">
               <span className="primary-text">
                 {" "}
@@ -58,6 +59,21 @@ function Profile() {
                 </h1>
               </span>
             </div>
+
+            {/* Description*/}
+            <h1>
+              <span className="profile-role-tagline">
+                Building applications with fron and backend operations
+              </span>
+            </h1>
+          </div>
+
+          {/* Profile Options*/}
+          <div className="profile-options">
+            <button className="btn primary-btn"> Hire Me </button>
+            <a href="../../../../public/resume.pdf">
+              <button className="btn highlighted-btn">Get Resume</button>
+            </a>
           </div>
         </div>
       </div>
