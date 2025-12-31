@@ -14,7 +14,7 @@ function Profile() {
             <a href="https://www.facebook.com/profile.php?id=61556737950018">
               <IoLogoFacebook color="black" />
             </a>
-            <a href="">
+            <a href="#">
               <AiFillGooglePlusSquare color="black" />
             </a>
             <a href="https://www.instagram.com/chiomaanaso.codes/">
@@ -23,14 +23,14 @@ function Profile() {
             <a href="https://www.youtube.com/@ChiomaAnaso-b5m4y">
               <TfiYoutube color="black" />
             </a>
-            <a href="">
+            <a href="#">
               <FaTwitter color="black" />
             </a>
 
             <div className="profile-details-name">
               <span>
                 {" "}
-                Hello, I'M <span className="highlighted-text">Chioma</span>
+                Hello, I'm <span className="highlighted-text">Chioma</span>
               </span>
             </div>
 
@@ -42,17 +42,17 @@ function Profile() {
                   <span>
                     <Typewriter
                       words={[
-                        "a Full Stack Developer 💻",
-                        "MERN Stack Dev  📲",
-                        "Cross Platform Dev 👩🏽‍💻",
-                        "building projects 📽️",
+                        "💻 a Full-Stack Developer",
+                        "🚀 building scalable web apps",
+                        "🎨 creating clean APIs & UIs",
+                        "🧠 turning ideas into products",
                       ]}
                       loop={0}
                       cursor
                       cursorStyle="|"
                       typeSpeed={80}
                       deleteSpeed={50}
-                      delayedSpeed={1200}
+                      delaySpeed={1200}
                     />
                   </span>
                 </h1>
