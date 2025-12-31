@@ -1,68 +1,248 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+/* ================================
+   1) Fonts (recommended approach)
+   Use ONE family name with weights
+================================== */
+
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-Regular.ttf") format("truetype");
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
 }
-
-a {
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-Medium.ttf") format("truetype");
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  font-style: normal;
 }
-a:hover {
-  color: #535bf2;
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("./assets/fonts/Poppins-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+/* ================================
+   2) Brand Tokens (matches banner)
+================================== */
+
+:root {
+  /* Banner-derived palette */
+  --bg-0: #0f0b14;     /* deep background */
+  --bg-1: #211625;     /* plum surface */
+  --bg-2: #2b2d4c;     /* cool shadow/blue */
+
+  --accent-1: #8d0b51; /* deep magenta highlight */
+  --accent-2: #873165; /* purple-magenta */
+  --accent-3: #ad6894; /* lilac highlight */
+
+  --text-1: #f4f2f7;   /* primary text */
+  --text-2: #c9c2d0;   /* muted text */
+
+  --border: rgba(244, 242, 247, 0.14);
+  --glass: rgba(255, 255, 255, 0.06);
+
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.55);
+  --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.45);
+
+  --radius-pill: 999px;
+  --radius-md: 16px;
+
+  /* Focus ring */
+  --ring: rgba(173, 104, 148, 0.55);
+}
+
+/* ================================
+   3) Base + Resets
+================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 400;
+
+  /* More predictable than overlay */
+  overflow-y: auto;
+
+  color: var(--text-1);
+  background: radial-gradient(
+      1200px 600px at 10% 20%,
+      rgba(141, 11, 81, 0.22),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 500px at 90% 30%,
+      rgba(43, 45, 76, 0.35),
+      transparent 55%
+    ),
+    linear-gradient(180deg, var(--bg-0), var(--bg-1));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+::selection {
+  background: rgba(141, 11, 81, 0.35);
+}
+
+/* Accessibility: don’t kill outlines globally */
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+/* ================================
+   4) Scrollbar (subtle + branded)
+================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(173, 104, 148, 0.35), rgba(141, 11, 81, 0.25));
+  border-radius: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(173, 104, 148, 0.55), rgba(141, 11, 81, 0.45));
+}
+
+/* ================================
+   5) Buttons (professional + on-brand)
+================================== */
+
+.btn {
+  border-radius: var(--radius-pill);
+  padding: 12px 18px;
+  min-width: 160px;
+
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: transform 140ms ease, box-shadow 160ms ease, background 160ms ease,
+    border-color 160ms ease, opacity 160ms ease;
+
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+
+  border: 1px solid transparent;
+  user-select: none;
+  box-shadow: var(--shadow-md);
+  background: transparent;
+  color: var(--text-1);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+.btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* Primary = “glass on dark” */
+.primary-btn {
+  background: rgba(33, 22, 37, 0.55);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+}
+
+.primary-btn:hover {
+  border-color: rgba(173, 104, 148, 0.55);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 0 6px rgba(231, 226, 229, 0.12);
+  color: var(--text-1)
+}
+
+/* Highlight = magenta/purple gradient */
+.highlighted-btn {
+  border: 1px solid rgba(244, 242, 247, 0.10);
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3));
+}
+
+.highlighted-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), 0 0 0 6px rgba(247, 247, 247, 0.12);
+  color: var(--text-1)
+}
+
+.highlighted-btn:active {
+  transform: translateY(1px);
+}
+
+/* Disabled state */
+.btn:disabled,
+.btn[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ================================
+   6) Utility / State classes
+================================== */
+
+.red-border {
+  border: 1px solid rgba(255, 92, 135, 0.65) !important;
+}
+
+/* smoother entrance */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+/* Optional: add this class when visible */
+.fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* If you had layout issues before, avoid negative z-index */
+@media only screen and (max-width: 568px) {
+  .highlighted-btn {
+    z-index: 1;
+    position: relative;
   }
 }
