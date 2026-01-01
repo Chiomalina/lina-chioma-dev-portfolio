@@ -1,25 +1,157 @@
+/* Header.css */
 .header-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: 150px;
-    margin-right: 150px;
-    height: 140px;
-    color: var(--bg-3);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  width: 100%;
 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 16px 20px;
+  min-height: 72px;
+
+  /* For a cleaner looks on scroll */
+  backdrop-filter: blur(10px);
 }
 
+/* Logo */
+.header-logo span {
+  font-size: 28px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: var(--bg-3);
+  letter-spacing: 0.5px;
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* Desktop nav */
+.header-options {
+  display: flex;
+  align-items: center;
+  gap: 28px; 
+}
+
+/*button */
+.header-option {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--bg-3);
+  cursor: pointer;
+
+  padding: 8px 6px;
+  border-radius: 10px;
+
+  transition: transform 160ms ease, opacity 160ms ease;
+}
+
+.header-option:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.selected-header-option {
+  color: var(--text-2);
+}
+
+/* Hamburger button */
 .header-hamburger {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    color: var(--bg-3);
+  display: none; /* hidden on desktop */
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+
+  border-radius: 12px;
+  cursor: pointer;
+
+  transition: opacity 160ms ease, transform 160ms ease;
 }
 
-.header-logo span{
-    font-size: 30px;
-    font-family: "Poppins";
-    font-weight: 600;
-    color: var(--bg-3);
+.header-hamburger:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.header-hamburger-bars {
+  font-size: 22px;
+  color: var(--bg-3);
+}
+
+
+
+
+/* -------------------------
+   Responsive (Tablet/Mobile)
+-------------------------- */
+@media (max-width: 970px) {
+  .header-hamburger {
+    display: flex;
+  }
+
+  /* Hide desktop layout and convert to dropdown panel */
+  .header-options {
+    position: absolute;
+    top: 72px; /* aligns with header height */
+    left: 16px;
+    right: 16px;
+
+    display: none; /* hidden until toggled */
+    flex-direction: column;
+    align-items: stretch;
+
+    padding: 14px;
+    border-radius: 16px;
+
+    /* Make it look like a panel */
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(12px);
+
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+  }
+
+  /* When showHeaderOptions is true */
+  .header-options.show-hamburger-options {
+    display: flex;
+  }
+
+  .header-option {
+    padding: 12px 12px;
+    border-radius: 12px;
+  }
+
+  .header-option:hover {
+    transform: none;
+    opacity: 0.9;
+  }
+}
+
+/* Small phones */
+@media (max-width: 420px) {
+  .header-logo span {
+    font-size: 22px;
+  }
+
+  .header-container {
+    padding: 12px 14px;
+    min-height: 64px;
+  }
+
+  .header-options {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: -100%;
+    top: 0px;
+    height: 100vh;
+    width: 100%;
+    justify-content: space-around;
+    background-color: var(--accent-3);
+    z-index: 1000;
+    opacity: 0.8;
+    transition: all 0.8s ease-out;
+  }
 }
