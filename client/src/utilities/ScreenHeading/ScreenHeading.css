@@ -50,6 +50,7 @@
 .seperator-blob div{
     width: 35px;
     border-radius: 10px;
-    background-color: var(--dark-orange);
+    
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3));
     
 }
