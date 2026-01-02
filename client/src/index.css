@@ -57,12 +57,15 @@
   --bg-2: #2b2d4c;     /* cool shadow/blue */
   --bg-3: white;     /* cool  */
 
+  --dark-orange: #ff5823;     /* cool  */
+
   --accent-1: #8d0b51; /* deep magenta highlight */
   --accent-2: #873165; /* purple-magenta */
   --accent-3: #ad6894; /* lilac highlight */
 
   --text-1: #f4f2f7;   /* primary text */
   --text-2: #c9c2d0;   /* muted text */
+  --text-3: #211625;   /* muted text */
 
   --border: rgba(244, 242, 247, 0.14);
   --glass: rgba(255, 255, 255, 0.06);

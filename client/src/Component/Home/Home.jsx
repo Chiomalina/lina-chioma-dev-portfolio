@@ -9,6 +9,8 @@ function Home() {
     <div className="home-container">
       <Header />
       <Profile />
+
+      
       <Footer />
     </div>
   );
