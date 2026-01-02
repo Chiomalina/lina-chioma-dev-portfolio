@@ -2,6 +2,7 @@ import React, { useEffects } from "react";
 import ScreenHeading from "../../utilities/ScreenHeading/ScreenHeading";
 import ScrollService from "../../utilities/ScrollService";
 import Animations from "../../utilities/Animations";
+import "./AboutMe.css";
 
 function AboutMe(props) {
   let fadeInScreenHandler = (screen) => {
