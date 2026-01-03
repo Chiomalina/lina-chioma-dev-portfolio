@@ -30,24 +30,34 @@ function Resume(props) {
   const ResumeHeading = (props) => {
     return (
       <div className="resume-heading">
-        <div className="resume-main-heading">
-          <div className="heading-bullet">
-            <span>{props.heading ? props.heading : ""}</span>
-            {props.fromDate && props.toDate ? (
-              <div className="heading-date">
-                {props.fromDate + "_" + props.toDate}
-              </div>
-            ) : (
-              <div></div>
-            )}
+        {/* Row 1: dot + title (left) + date pill (right) */}
+        <div className="resume-heading-row">
+          <span className="heading-bullet" aria-hidden="true" />
+
+          <div className="resume-heading-title-wrap">
+            <span className="resume-heading-title">{props.heading || ""}</span>
           </div>
-          <div className="resume-sub-heading">
-            <span>{props.subHeading ? props.subHeading : " "}</span>
-          </div>
-          <div className="resume-heading-description">
-            <span>{props.description ? props.description : ""}</span>
-          </div>
+
+          {props.fromDate && props.toDate ? (
+            <span className="heading-date">
+              {props.fromDate}–{props.toDate}
+            </span>
+          ) : null}
         </div>
+
+        {/* Row 2: subheading */}
+        {props.subHeading ? (
+          <div className="resume-sub-heading">
+            <span>{props.subHeading}</span>
+          </div>
+        ) : null}
+
+        {/* Row 3: description */}
+        {props.description ? (
+          <div className="resume-heading-description">
+            <span>{props.description}</span>
+          </div>
+        ) : null}
       </div>
     );
   };
