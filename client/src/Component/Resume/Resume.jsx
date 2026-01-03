@@ -17,26 +17,28 @@ function Resume(props) {
     ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler);
 
   const ResumeHeading = (props) => {
-    <div className="resume-heading">
-      <div className="resume-main-heading">
-        <div className="heading-bullet">
-          <span>{props.heading ? props.heading : ""}</span>
-          {props.fromDate && props.toDate ? (
-            <div className="heading-date">
-              {props.formDate + "_" + props.toDate}
-            </div>
-          ) : (
-            <div></div>
-          )}
-        </div>
-        <div className="resume-sub-heading">
-          <span>{props.subHeading ? props.subHeading : " "}</span>
-        </div>
-        <div className="resume-heading-description">
-          <span>{props.description ? props.description : ""}</span>
+    return (
+      <div className="resume-heading">
+        <div className="resume-main-heading">
+          <div className="heading-bullet">
+            <span>{props.heading ? props.heading : ""}</span>
+            {props.fromDate && props.toDate ? (
+              <div className="heading-date">
+                {props.formDate + "_" + props.toDate}
+              </div>
+            ) : (
+              <div></div>
+            )}
+          </div>
+          <div className="resume-sub-heading">
+            <span>{props.subHeading ? props.subHeading : " "}</span>
+          </div>
+          <div className="resume-heading-description">
+            <span>{props.description ? props.description : ""}</span>
+          </div>
         </div>
       </div>
-    </div>;
+    );
   };
 
   const resumeBullets = [
@@ -187,11 +189,7 @@ function Resume(props) {
           - Oversaw Quality Assurance processes for lubricant blending.
         </span>
       </div>
-      <div
-        className="resume-screen-container"
-        programming-skills-container
-        key="programming-skills"
-      >
+      <div className="resume-screen-container" key="programming-skills">
         {programmingSkillDetails.map((skill, index) => (
           <div className="skill-parent" key={index}>
             <div className="heading-bullet"></div>
@@ -252,16 +250,17 @@ function Resume(props) {
     return resumeBullets.map((bullet, index) => (
       <div
         className={
-          index === selectedBulletIndex ? "bellet selected-bullte" : "bullet"
+          index === selectedBulletIndex ? "bullet selected-bullet" : "bullet"
         }
         onClick={handleCarousal(index)}
         key={index}
       >
         <img
           className="bullet-log"
-          src={require(`../../../public/Resume/${bullet.logoSrc}`)}
+          src={`../../../public/Resume/${bullet.logoSrc}`}
           alt="Logos"
         />
+        {bullet.label}
       </div>
     ));
   };
@@ -278,16 +277,18 @@ function Resume(props) {
   };
 
   return (
-    <div resume-container screen-container id={props.id || ""}>
+    <div className="resume-container screen-container" id={props.id || ""}>
       <div className="resume-content">
         <ScreenHeading title={"Resume"} subHeading={"My Formal Bio Details"} />
         <div className="resume-card">
-            <div className="resume-bullets">
-                <div className="bullet-container">
-                    <div className="bullet-icons"></div>
-                    <div className="bullets"></div>
-                </div>
+          <div className="resume-bullets">
+            <div className="bullet-container">
+              <div className="bullet-icons"></div>
+              <div className="bullets">{getBullets()}</div>
             </div>
+          </div>
+
+          <div className="resume-bullet-details">{getResumeScreen()}</div>
         </div>
       </div>
     </div>
