@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ScreenHeading from "../../utilities/ScreenHeading/ScreenHeading";
 import ScrollService from "../../utilities/ScrollService";
 import Animations from "../../utilities/Animations";
@@ -16,6 +16,17 @@ function Resume(props) {
   const fadeInSubcription =
     ScrollService.currentScreenFadeIn.subscribe(fadeInScreenHandler);
 
+  const detailsRef = useRef(null);
+
+  const handleCarousal = (index) => {
+    const offsetHeight = detailsRef.current?.offsetHeight ?? 460;
+
+    setCarousalOffSetStyle({
+      style: { transform: `translateY(${index * offsetHeight * -1}px)` },
+    });
+    setSelectedBulletIndex(index);
+  };
+
   const ResumeHeading = (props) => {
     return (
       <div className="resume-heading">
@@ -24,7 +35,7 @@ function Resume(props) {
             <span>{props.heading ? props.heading : ""}</span>
             {props.fromDate && props.toDate ? (
               <div className="heading-date">
-                {props.formDate + "_" + props.toDate}
+                {props.fromDate + "_" + props.toDate}
               </div>
             ) : (
               <div></div>
@@ -109,33 +120,35 @@ function Resume(props) {
   ];
 
   const resumeDetails = [
+    // 0) Education
     <div className="resume-screen-container" key="education">
       <ResumeHeading
-        heading={"MASTER SCHOOL BERLIN"}
-        subHeading={"SOFTWARE ENGINEERING"}
-        fromDate={"2024"}
-        toDate={"2026"}
+        heading="MASTER SCHOOL BERLIN"
+        subHeading="SOFTWARE ENGINEERING"
+        fromDate="2024"
+        toDate="2026"
       />
       <ResumeHeading
-        heading={"National Open University of Nigeria"}
-        subHeading={"MASTERS BUSINESS ADMINISTRATION"}
-        fromDate={"2012"}
-        toDate={"2018"}
+        heading="National Open University of Nigeria"
+        subHeading="MASTERS BUSINESS ADMINISTRATION"
+        fromDate="2012"
+        toDate="2018"
       />
       <ResumeHeading
-        heading={"Institute of Management and Technology"}
-        subHeading={"HND CHEMICAL ENGINEERING"}
-        fromDate={"2004"}
-        toDate={"2009"}
+        heading="Institute of Management and Technology"
+        subHeading="HND CHEMICAL ENGINEERING"
+        fromDate="2004"
+        toDate="2009"
       />
     </div>,
 
-    <div className="resume-screen-container" key="work-experience">
+    // 1) Work History
+    <div className="resume-screen-container" key="work-history">
       <ResumeHeading
-        heading={"Cobel Contracting Nigeria"}
-        subHeading={"Quality Assurance and Quality Control Officer"}
-        fromDate={"2012"}
-        toDate={"2016"}
+        heading="Cobel Contracting Nigeria"
+        subHeading="Quality Assurance and Quality Control Officer"
+        fromDate="2012"
+        toDate="2016"
       />
       <div className="experience-description">
         <span className="resume-description-text">
@@ -144,107 +157,97 @@ function Resume(props) {
         </span>
         <br />
         <span className="resume-description-text">
-          - Implemented statistical control tools and monitoring methods,
-          resulting in a reduction of third-party rejection rates from 80% to 5%
-          and a decrease in corrective-action costs by 40%.
+          - Reduced third-party rejection rates from 80% to 5% and decreased
+          corrective-action costs by 40%.
         </span>
         <br />
         <span className="resume-description-text">
-          - Directed internal audits and management reviews, promoting
-          cross-team collaboration to address non-conformances, leading to a 50%
-          decrease in defects.
+          - Led audits and cross-team reviews, reducing defects by 50%.
         </span>
       </div>
+
       <ResumeHeading
-        heading={"Yasnas Engineering Limited"}
-        subHeading={"Quality Assurance and Quality Control Officer"}
-        fromDate={"2011"}
-        toDate={"2012"}
+        heading="Yasnas Engineering Limited"
+        subHeading="Quality Assurance and Quality Control Officer"
+        fromDate="2011"
+        toDate="2012"
       />
       <div className="experience-description">
         <span className="resume-description-text">
-          - Steered a team in charge of constructing 353 bearing piles and 500
-          secant piles, laying the groundwork for the EKO Guest House project.
+          - Managed QA oversight for 353 bearing piles and 500 secant piles for
+          the EKO Guest House project.
         </span>
         <br />
         <span className="resume-description-text">
-          - Devised and executed a thorough inspection plan for piling
-          operations, which streamlined processes and reduced project delays by
-          10%.
+          - Designed an inspection plan that reduced project delays by 10%.
         </span>
       </div>
+
       <ResumeHeading
-        heading={"Grand Petroleum"}
-        subHeading={"Quality Assurance and Quality Control Officer"}
-        fromDate={"2010"}
-        toDate={"2011"}
+        heading="Grand Petroleum"
+        subHeading="Quality Assurance and Quality Control Officer"
+        fromDate="2010"
+        toDate="2011"
       />
       <div className="experience-description">
         <span className="resume-description-text">
-          - Established CAPA systems, effectively eliminating the use of
-          substandard base oil and subsequently increasing profits by 20%.
+          - Built CAPA systems that eliminated substandard base oil usage and
+          increased profits by 20%.
         </span>
         <br />
         <span className="resume-description-text">
-          - Oversaw Quality Assurance processes for lubricant blending.
+          - Oversaw QA processes for lubricant blending.
         </span>
-      </div>
-      <div className="resume-screen-container" key="programming-skills">
-        {programmingSkillDetails.map((skill, index) => (
-          <div className="skill-parent" key={index}>
-            <div className="heading-bullet"></div>
-            <span>{skill.skill}</span>
-
-            <div className="skill-percentage">
-              <div
-                style={{ width: skill.ratingPercentage + "%" }}
-                className="active-percentage"
-              ></div>
-            </div>
-          </div>
-        ))}
-      </div>
-      ,
-      <div className="resume-screen-container" key="projects">
-        {projectDetails.map((projectDetail, index) => (
-          <ResumeHeading
-            key={index}
-            heading={projectDetail.title}
-            subHeading={projectDetail.subHeading}
-            description={projectDetail.description}
-            fromDate={projectDetail.duration.fromDate}
-            toDate={projectDetail.duration.toDate}
-          />
-        ))}
-      </div>
-      ,
-      <div className="resume-screen-container" key="interests">
-        <ResumeHeading
-          heading="Continuous Learning"
-          description="Actively exploring new technologies, tools, and best practices in software engineering to improve code quality and problem-solving skills."
-        />
-
-        <ResumeHeading
-          heading="Swimming"
-          description="A regular fitness activity that helps maintain focus, discipline, and mental clarity, supporting sustained productivity in technical work."
-        />
-
-        <ResumeHeading
-          heading="Music"
-          description="Listening to music to enhance concentration and creative thinking, especially during deep problem-solving and development sessions."
-        />
       </div>
     </div>,
-  ];
 
-  const handleCarousal = (index) => {
-    let offsetHeight = 360;
-    let newCarousaloffset = {
-      style: { transform: "translateY(" + index * offsetHeight * -1 + "px)" },
-    };
-    setCarousalOffSetStyle(newCarousaloffset);
-    setSelectedBulletIndex(index);
-  };
+    // 2) Programming Skills
+    <div className="resume-screen-container" key="programming-skills">
+      {programmingSkillDetails.map((skill, index) => (
+        <div className="skill-parent" key={index}>
+          <div className="heading-bullet"></div>
+          <span>{skill.skill}</span>
+
+          <div className="skill-percentage">
+            <div
+              style={{ width: `${skill.ratingPercentage}%` }}
+              className="active-percentage"
+            />
+          </div>
+        </div>
+      ))}
+    </div>,
+
+    // 3) Projects
+    <div className="resume-screen-container" key="projects">
+      {projectDetails.map((project, index) => (
+        <ResumeHeading
+          key={index}
+          heading={project.title}
+          subHeading={project.subHeading}
+          description={project.description}
+          fromDate={project.duration.fromDate}
+          toDate={project.duration.toDate}
+        />
+      ))}
+    </div>,
+
+    // 4) Interests
+    <div className="resume-screen-container" key="interests">
+      <ResumeHeading
+        heading="Continuous Learning"
+        description="Actively exploring new technologies, tools, and best practices in software engineering to improve code quality and problem-solving skills."
+      />
+      <ResumeHeading
+        heading="Swimming"
+        description="A regular fitness activity that helps maintain focus, discipline, and mental clarity, supporting sustained productivity in technical work."
+      />
+      <ResumeHeading
+        heading="Music"
+        description="Listening to music to enhance concentration and creative thinking, especially during deep problem-solving and development sessions."
+      />
+    </div>,
+  ];
 
   const getBullets = () => {
     return resumeBullets.map((bullet, index) => (
@@ -252,15 +255,15 @@ function Resume(props) {
         className={
           index === selectedBulletIndex ? "bullet selected-bullet" : "bullet"
         }
-        onClick={handleCarousal(index)}
+        onClick={() => handleCarousal(index)}
         key={index}
       >
         <img
-          className="bullet-log"
+          className="bullet-logo"
           src={`../../../public/Resume/${bullet.logoSrc}`}
           alt="Logos"
         />
-        {bullet.label}
+        <div className="bullet-label">{bullet.label}</div>
       </div>
     ));
   };
@@ -288,7 +291,9 @@ function Resume(props) {
             </div>
           </div>
 
-          <div className="resume-bullet-details">{getResumeScreen()}</div>
+          <div className="resume-bullet-details" ref={detailsRef}>
+            {getResumeScreen()}
+          </div>
         </div>
       </div>
     </div>
